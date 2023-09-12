@@ -21,6 +21,7 @@ const menuVariants = {
 
 const MobileNav = () => {
   const [openMenu, setOpenMenu] = useState(false);
+
   return (
     <nav className="text-primary xl:hidden">
       <div
@@ -33,7 +34,7 @@ const MobileNav = () => {
         variants={menuVariants}
         initial="hidden"
         animate={openMenu ? "show" : ""}
-        className="bg-white shadow-2xl w-full absolute top-0 right-0 max-w-xs h-screen z-20"
+        className="bg-white/95 shadow-2xl w-full absolute top-0 right-0 max-w-xs h-screen z-20"
       >
         <div
           onClick={() => setOpenMenu(false)}

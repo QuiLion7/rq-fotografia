@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import Image1 from "../img/portfolio/1.png";
 import Image2 from "../img/portfolio/2.png";
@@ -11,18 +11,24 @@ import { motion } from "framer-motion";
 
 import { transition1 } from "../transitions";
 
+import { CursorContext } from "../context/CursorContext";
+
 const Portfolio = () => {
+  const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
+
   return (
     <motion.section
       initial={{ opacity: 0, y: "100%" }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: "100%" }}
       transition={transition1}
-      className="section"
+      className="section pl-1 pr-1 overflow-auto"
     >
       <div className="container mx-auto h-full relative">
         <div className="flex flex-col lg:flex-row h-full items-center justify-start gap-x-24 text-center lg:text-left pt-24 lg:pt-36 pb-8">
           <motion.div
+            onMouseEnter={mouseEnterHandler}
+            onMouseLeave={mouseLeaveHandler}
             initial={{ opacity: 0, y: "-80%" }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "-80%" }}
@@ -37,19 +43,16 @@ const Portfolio = () => {
               expressões mais sutis, cada clique é uma prova do{" "}
               <b>compromisso em transformar</b> o comum em <b>extraordinário</b>
               .
-              <br />
-              <br />
-              Navegue por esta coleção, onde cada imagem{" "}
-              <b>conta a sua própria história</b> e convida você a compartilhar
-              a visão única que tenho do mundo ao meu redor. Seja transportado
-              para cenários vívidos e emocionantes, congelados no tempo por meio
-              da <b>magia da fotografia</b>.
             </p>
             <Link to={"/contact"} className="btn mb-[30px] mx-auto lg:mx-0">
               Contrate-me
             </Link>
           </motion.div>
-          <div className="grid grid-cols-2 lg:gap-2">
+          <div
+            onMouseEnter={mouseEnterHandler}
+            onMouseLeave={mouseLeaveHandler}
+            className="grid grid-cols-2 gap-1 lg:gap-2 "
+          >
             <div className="max-w-[250px] lg:max-w-[320px] h-[187px] lg:h-[220px] bg-accent overflow-hidden">
               <img
                 className="object-cover h-full lg:h-[220px] hover:scale-110 transition-all duration-500"
